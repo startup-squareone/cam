@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoe Measurement</title>
+</head>
+<body>
+    <h1>Shoe Measurement</h1>
+    
+    <!-- Input for uploading an image -->
+    <input type="file" id="imageInput" accept="image/*">
+    
+    <!-- Button to trigger measurement -->
+    <button id="measureButton">Measure Foot</button>
+    
+    <!-- Display the measurement result -->
+    <div id="measurementResult"></div>
+
+    <script>
+        // Function to handle image upload and measurement
+        document.getElementById('measureButton').addEventListener('click', function() {
+            const imageInput = document.getElementById('imageInput');
+            const measurementResult = document.getElementById('measurementResult');
+
+            if (imageInput.files.length > 0) {
+                const file = imageInput.files[0];
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    // Here, you can perform image processing and measurement calculations
+                    // Replace this with your actual code
+                    const measurement = calculateMeasurement(e.target.result);
+
+                    // Display the measurement result
+                    measurementResult.innerHTML = `Foot Measurement: ${measurement} cm`;
+                };
+
+                // Read the uploaded image as a data URL
+                reader.readAsDataURL(file);
+            } else {
+                alert('Please select an image to measure.');
+            }
+        });
+
+        // Replace this function with your actual measurement calculation logic
+        function calculateMeasurement(imageData) {
+            // Simulated measurement calculation, replace with actual code
+            // For this example, we'll return a random number between 20 and 30 cm
+            return (Math.random() * 10 + 20).toFixed(2);
+        }
+    </script>
+</body>
+</html>
