@@ -4,25 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shoe Measurement</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        #imageInput {
+            display: none;
+        }
+
+        #uploadButton {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        #measurementResult {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
     <h1>Shoe Measurement</h1>
-    
+
     <!-- Input for uploading an image -->
     <input type="file" id="imageInput" accept="image/*">
     
-    <!-- Button to trigger measurement -->
-    <button id="measureButton">Measure Foot</button>
+    <!-- Button to trigger image upload -->
+    <label for="imageInput" id="uploadButton">Upload Foot Image</label>
     
     <!-- Display the measurement result -->
     <div id="measurementResult"></div>
 
     <script>
         // Function to handle image upload and measurement
-        document.getElementById('measureButton').addEventListener('click', function() {
-            const imageInput = document.getElementById('imageInput');
-            const measurementResult = document.getElementById('measurementResult');
+        const imageInput = document.getElementById('imageInput');
+        const uploadButton = document.getElementById('uploadButton');
+        const measurementResult = document.getElementById('measurementResult');
 
+        uploadButton.addEventListener('click', function() {
+            imageInput.click(); // Trigger the hidden file input
+        });
+
+        imageInput.addEventListener('change', function() {
             if (imageInput.files.length > 0) {
                 const file = imageInput.files[0];
                 const reader = new FileReader();
@@ -52,3 +85,4 @@
     </script>
 </body>
 </html>
+
